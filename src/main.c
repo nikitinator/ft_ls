@@ -6,7 +6,7 @@
 /*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/16 20:00:09 by snikitin          #+#    #+#             */
-/*   Updated: 2018/03/19 14:48:34 by snikitin         ###   ########.fr       */
+/*   Updated: 2018/03/21 18:50:50 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 int		main(int argc, char **argv)
 {
 	t_params	params;
-	t_dir		*dirs;
-	t_file		*files;
+	t_dirs		dirs;
+	t_files		files;
 
 	if (get_arg_keys(argc, argv, &params))
 		return (-1);

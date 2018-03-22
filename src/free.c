@@ -1,23 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/26 18:21:34 by snikitin          #+#    #+#             */
-/*   Updated: 2018/03/19 20:55:33 by snikitin         ###   ########.fr       */
+/*   Created: 2018/03/19 19:37:44 by snikitin          #+#    #+#             */
+/*   Updated: 2018/03/21 20:30:56 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strcmp(const char *s1, const char *s2)
+#include "ft_ls.h"
+
+void	free_dirs(t_dirs dirs)
 {
-	while (*s1 == *s2)
+	int		i;
+	
+	i = 0;
+	while(i < dirs.size)
 	{
-		if (*s1 == '\0')
-			return (0);
-		s1++;
-		s2++;
+		closedir(dirs.arr[i].dir_p);
+		i++;
 	}
-	return ((unsigned char)*s1 - (unsigned char)*s2);
+	free(dirs.arr);
+}
+
+void	free_files(t_files files)
+{
+	int		i;
+	
+	i = 0;
+	if (files.arr)
+		free(files.arr);
 }

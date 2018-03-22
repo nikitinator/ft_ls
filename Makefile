@@ -6,7 +6,7 @@
 #    By: snikitin <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/13 20:40:56 by snikitin          #+#    #+#              #
-#    Updated: 2018/03/18 17:47:21 by snikitin         ###   ########.fr        #
+#    Updated: 2018/03/21 20:28:19 by snikitin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,8 +24,14 @@ LIB_DIR := ./lib/
 # project source files
 
 SRC := main.c\
+       get_arg_keys.c\
+       get_arg_files.c\
+	   list_dirs.c\
+	   list_files.c\
 	   print_usage.c\
-       get_params.c
+	   free.c\
+	   sort_files.c\
+	   list_to_arr.c
 
 # project object files
 
@@ -42,7 +48,8 @@ LIBFT_FLAGS :=  -lft -L $(LIBFT_DIR)
 
 # compilation flags
 
-CC_FLAGS := -Wall -Wextra -Werror
+CC_FLAGS := -Wall -Wextra -Werror -g
+
 
 
 # linking flags
