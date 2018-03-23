@@ -1,33 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   reverse.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/16 20:00:09 by snikitin          #+#    #+#             */
-/*   Updated: 2018/03/22 15:56:48 by snikitin         ###   ########.fr       */
+/*   Created: 2018/03/22 17:42:34 by snikitin          #+#    #+#             */
+/*   Updated: 2018/03/22 18:04:04 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-int		main(int argc, char **argv)
+void	reverse_files(t_files files)
 {
-	t_params	params;
-	t_dirs		dirs;
-	t_files		files;
+	int		i; //prover type
 
-	if (get_arg_keys(argc, argv, &params))
-		return (-1);
-	if (get_arg_files(argc, argv, &dirs, &files)) //TODO pick more cool name (files)
-		return (-1);
-	list_files(files, params);
-	if (dirs.size == 1)
-		list_dir(dirs.arr[0], params);
-	else
-		list_dirs(dirs, params);
-	free_dirs(dirs);
-	free_files(files);
-	return (0);
+	i = 0;
+	while (i < files.size / 2)
+	{
+		swap_files(files.arr + i, files.arr + (files.size - i - 1));
+		i++;
+	}
+}
+
+void	reverse_dirs(t_dirs dirs)
+{
+	int		i; //prover type
+
+	i = 0;
+	while (i < dirs.size / 2)
+	{
+		swap_dirs(dirs.arr + i, dirs.arr + (dirs.size - i - 1));
+		i++;
+	}
 }

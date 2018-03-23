@@ -6,7 +6,7 @@
 #    By: snikitin <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/13 20:40:56 by snikitin          #+#    #+#              #
-#    Updated: 2018/03/21 20:28:19 by snikitin         ###   ########.fr        #
+#    Updated: 2018/03/22 17:55:00 by snikitin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,12 @@ SRC := main.c\
 	   print_usage.c\
 	   free.c\
 	   sort_files.c\
-	   list_to_arr.c
+	   list_to_arr.c\
+	   print_list_long.c\
+	   get_from_dir.c\
+	   del_list.c\
+	   reverse.c\
+	   swap.c
 
 # project object files
 
@@ -78,7 +83,7 @@ $(OBJ): | $(OBJ_DIR)
 $(OBJ_DIR):
 	mkdir $(OBJ_DIR)
 #$(INC)
-$(OBJ_DIR)%.o: %.c 
+$(OBJ_DIR)%.o: %.c $(INC)
 	$(CC) -c $< -o $@ $(CC_FLAGS) $(HEADER_FLAGS)
 
 $(LIBFT):

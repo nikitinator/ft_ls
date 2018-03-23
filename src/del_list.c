@@ -1,27 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   del_list.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snikitin <snikitin@student.unit.ua>        +#+  +:+       +#+        */
+/*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/27 11:14:05 by snikitin          #+#    #+#             */
-/*   Updated: 2018/03/22 15:53:31 by snikitin         ###   ########.fr       */
+/*   Created: 2018/03/22 16:52:02 by snikitin          #+#    #+#             */
+/*   Updated: 2018/03/22 16:53:14 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_ls.h"
 
-char	*ft_strdup(const char *s1)
+void		del_list(void *content, size_t content_size)
 {
-	char *copy;
-	char *ccopy;
-
-	if (!(copy = (char *)malloc(ft_strlen(s1) + 1)))
-		return (0);
-	ccopy = copy;
-	while (*s1 != '\0')
-		*copy++ = *s1++;
-	*copy = '\0';
-	return (ccopy);
+	(void)content_size;
+	free(content);
 }

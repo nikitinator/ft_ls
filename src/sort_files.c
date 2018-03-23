@@ -6,20 +6,11 @@
 /*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 15:12:39 by snikitin          #+#    #+#             */
-/*   Updated: 2018/03/22 13:43:02 by snikitin         ###   ########.fr       */
+/*   Updated: 2018/03/22 18:30:22 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
-
-void	swap_files(t_file *file_1, t_file *file_2)
-{
-	t_file file_temp;
-
-	file_temp = *file_1;
-	*file_1 = *file_2;
-	*file_2 = file_temp;
-}
 
 int		file_cmp_lexicograph(t_file file_1, t_file file_2)
 {
@@ -28,7 +19,7 @@ int		file_cmp_lexicograph(t_file file_1, t_file file_2)
 
 int		file_cmp_time_modif(t_file file_1, t_file file_2)
 {
-	return (file_2.stat_p.st_mtime - file_1.stat_p.st_mtime);
+	return (file_2.f_stat.st_mtime - file_1.f_stat.st_mtime);
 }
 
 void	quick_sort_files(t_file *arr, t_uint size,
@@ -39,7 +30,7 @@ void	quick_sort_files(t_file *arr, t_uint size,
 
 	if (size <= 1)
 		return ;
-	swap_files(arr + 0, arr + size - 1);
+	swap_files(arr + 0, arr + size/2);
 	last = 0;
 	i = 1;
 	while (i < size)

@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/16 20:00:09 by snikitin          #+#    #+#             */
-/*   Updated: 2018/03/22 15:56:48 by snikitin         ###   ########.fr       */
+/*   Created: 2018/03/22 17:44:57 by snikitin          #+#    #+#             */
+/*   Updated: 2018/03/22 18:12:53 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-int		main(int argc, char **argv)
+void	swap_files(t_file *file_1, t_file *file_2)
 {
-	t_params	params;
-	t_dirs		dirs;
-	t_files		files;
+	t_file file_temp;
 
-	if (get_arg_keys(argc, argv, &params))
-		return (-1);
-	if (get_arg_files(argc, argv, &dirs, &files)) //TODO pick more cool name (files)
-		return (-1);
-	list_files(files, params);
-	if (dirs.size == 1)
-		list_dir(dirs.arr[0], params);
-	else
-		list_dirs(dirs, params);
-	free_dirs(dirs);
-	free_files(files);
-	return (0);
+	file_temp = *file_1;
+	*file_1 = *file_2;
+	*file_2 = file_temp;
+}
+
+void	swap_dirs(t_dir *dir_1, t_dir *dir_2)
+{
+	t_dir dir_temp;
+
+	dir_temp = *dir_1;
+	*dir_1 = *dir_2;
+	*dir_2 = dir_temp;
 }
