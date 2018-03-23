@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   is.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/16 20:00:09 by snikitin          #+#    #+#             */
-/*   Updated: 2018/03/23 15:47:51 by snikitin         ###   ########.fr       */
+/*   Created: 2018/03/23 13:39:50 by snikitin          #+#    #+#             */
+/*   Updated: 2018/03/23 18:40:12 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-int		main(int argc, char **argv)
+int		is_dir(mode_t st_mode)
 {
-	t_params	params;
-	t_files		dirs;
-	t_files		files;
+	return ((st_mode & S_IFMT) == S_IFDIR);
+}
 
-	if (get_arg_keys(argc, argv, &params))
-		return (-1);
-	if (get_arg_files(argc, argv, &dirs, &files)) //TODO pick more cool name (files)
-		return (-1);
-	list_files(files, NULL, params);
-	if (dirs.size == 1)
-		list_dir(dirs.arr[0], params);
-	else
-		list_dirs(dirs, params);
-	free_dirs(dirs);
-	free_files(files);
-	return (0);
+int		is_sym_link(mode_t st_mode)
+{
+	return ((st_mode & S_IFMT) == S_IFLNK);
+}
+
+int		is_hidden(char *name)
+{
+	return (*name == '.');
 }

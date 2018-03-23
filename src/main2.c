@@ -6,7 +6,7 @@
 /*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 20:44:59 by snikitin          #+#    #+#             */
-/*   Updated: 2018/03/22 14:14:49 by snikitin         ###   ########.fr       */
+/*   Updated: 2018/03/23 14:18:57 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ int		main(int argc, char **argv)
 		ft_putstr("MODES: ");
 		print_file_modes(s_p.st_mode);
 		ft_putchar('\n');
-
 
 		ft_putstr("NUM_OF_LINKS: ");
 		ft_putnbr((long)s_p.st_nlink);

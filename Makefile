@@ -6,7 +6,7 @@
 #    By: snikitin <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/13 20:40:56 by snikitin          #+#    #+#              #
-#    Updated: 2018/03/22 17:55:00 by snikitin         ###   ########.fr        #
+#    Updated: 2018/03/23 18:14:07 by snikitin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,11 @@ SRC := main.c\
 	   get_from_dir.c\
 	   del_list.c\
 	   reverse.c\
-	   swap.c
+	   swap.c\
+	   is.c\
+	   get_space_num.c\
+	   print.c\
+	   print_mod_time.c
 
 # project object files
 

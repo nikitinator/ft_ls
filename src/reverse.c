@@ -6,7 +6,7 @@
 /*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/22 17:42:34 by snikitin          #+#    #+#             */
-/*   Updated: 2018/03/22 18:04:04 by snikitin         ###   ########.fr       */
+/*   Updated: 2018/03/23 14:36:23 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,6 @@ void	reverse_files(t_files files)
 	while (i < files.size / 2)
 	{
 		swap_files(files.arr + i, files.arr + (files.size - i - 1));
-		i++;
-	}
-}
-
-void	reverse_dirs(t_dirs dirs)
-{
-	int		i; //prover type
-
-	i = 0;
-	while (i < dirs.size / 2)
-	{
-		swap_dirs(dirs.arr + i, dirs.arr + (dirs.size - i - 1));
 		i++;
 	}
 }
