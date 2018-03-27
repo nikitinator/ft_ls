@@ -6,20 +6,11 @@
 /*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 15:11:49 by snikitin          #+#    #+#             */
-/*   Updated: 2018/03/23 20:17:19 by snikitin         ###   ########.fr       */
+/*   Updated: 2018/03/27 19:19:23 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
-
-void	print_n_spaces(int n)
-{
-	while (n)
-	{
-		ft_putchar(' ');
-		n--;
-	}
-}
 
 void	print_total(t_files files)
 {
@@ -39,7 +30,7 @@ void	print_total(t_files files)
 	ft_putchar('\n');
 }
 
-void	print_file_type(mode_t st_mode)
+void	print_type(mode_t st_mode)
 {
 	mode_t	file_type;
 
@@ -62,7 +53,7 @@ void	print_file_type(mode_t st_mode)
 		ft_putstr("-");
 }
 
-void	print_file_modes(mode_t st_mode)
+void	print_modes(mode_t st_mode)
 {
 	ft_putstr((st_mode & S_IRUSR) ? "r" : "-");
 	ft_putstr((st_mode & S_IWUSR) ? "w" : "-");
@@ -72,20 +63,16 @@ void	print_file_modes(mode_t st_mode)
 	ft_putstr((st_mode & S_IXGRP) ? "x" : "-");
 	ft_putstr((st_mode & S_IROTH) ? "r" : "-");
 	ft_putstr((st_mode & S_IWOTH) ? "w" : "-");
-	ft_putstr((st_mode & S_IXOTH) ? "x" : "-");
+	if (st_mode & S_ISVTX)
+		ft_putstr((st_mode & S_IXOTH) ? "t" : "T");
+	else
+		ft_putstr((st_mode & S_IXOTH) ? "x" : "-");
 }
 
-void	print_sticky_bit(char *dir_path, char *file_name)
+void	print_sticky_bit(char *full_path)
 {
-	char	*full_file_name;
-
-	full_file_name = file_name;
-	if (dir_path)
-		full_file_name = get_full_path(dir_path, file_name);
-	if (listxattr(full_file_name, NULL, 0, XATTR_NOFOLLOW))//XATTR_SHOWCOMPRESSION
+	if (listxattr(full_path, NULL, 0, 0))//XATTR_SHOWCOMPRESSION, XATTR_NOFOLLOW))
 		ft_putchar('@');
 	else
 		ft_putchar(' ');
-	if (dir_path)
-		free(full_file_name);
 }

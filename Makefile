@@ -6,7 +6,7 @@
 #    By: snikitin <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/13 20:40:56 by snikitin          #+#    #+#              #
-#    Updated: 2018/03/23 18:14:07 by snikitin         ###   ########.fr        #
+#    Updated: 2018/03/27 17:10:54 by snikitin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,9 @@ SRC := main.c\
 	   is.c\
 	   get_space_num.c\
 	   print.c\
-	   print_mod_time.c
+	   print_mod_time.c\
+	   get_full_paths.c\
+	   ft_putnchar.c
 
 # project object files
 

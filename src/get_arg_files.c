@@ -6,7 +6,7 @@
 /*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 12:34:07 by snikitin          #+#    #+#             */
-/*   Updated: 2018/03/23 20:23:01 by snikitin         ###   ########.fr       */
+/*   Updated: 2018/03/27 18:52:48 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,9 @@ static int		open_arg_to_lists(char **argv,
 		}
 		else
 		{
-			ft_putendl(*argv);
-			ft_putendl("NEMA FILE, dlava ukraini");//TODO razberis s errorami
+			ft_putstr_fd("ls: ", 2);
+			ft_putstr_fd(*argv, 2);
+			ft_putendl_fd(": No such file or directory", 2);//TODO razberis s errorami
 		}
 		argv++;
 	}

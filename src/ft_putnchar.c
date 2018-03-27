@@ -1,44 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   ft_putnchar.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/19 19:37:44 by snikitin          #+#    #+#             */
-/*   Updated: 2018/03/27 16:21:06 by snikitin         ###   ########.fr       */
+/*   Created: 2018/03/27 17:09:24 by snikitin          #+#    #+#             */
+/*   Updated: 2018/03/27 17:22:44 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+//add it to libft
+//
 #include "ft_ls.h"
 
-//void	free_dirs(t_dirs dirs)
-//{
-//	int		i;
-//	
-//	i = 0;
-//	while(i < dirs.size)
-//	{
-//		closedir(dirs.arr[i].dir_p);
-//		i++;
-//	}
-//	free(dirs.arr);
-//}
-
-void	free_dirs(t_files files)
+void	ft_putnchar(int n, char c)
 {
-	int		i;
-	
-	i = 0;
-	if (files.arr)
-		free(files.arr);
-}
-
-void	free_files(t_files files)
-{
-	int		i;
-	
-	i = 0;
-	if (files.arr)
-		free(files.arr);
+	while (n > 0)
+	{
+		ft_putchar(c);
+		n--;
+	}
 }
