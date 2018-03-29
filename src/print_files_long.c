@@ -6,7 +6,7 @@
 /*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/28 12:53:21 by snikitin          #+#    #+#             */
-/*   Updated: 2018/03/29 16:20:24 by snikitin         ###   ########.fr       */
+/*   Updated: 2018/03/29 17:27:09 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,18 @@ void	print_one_line(t_file file, t_add_file_info i) //fixx it
 	print_type(file.f_stat.st_mode);
 	print_modes(file.f_stat.st_mode);
 	print_has_attr(i.full_path);
-	print_n_saces(i.n_space.links + 1);
-	ft_putnbr(file.f_stat.st_nlink);
 	ft_putchar(' ');
+
+	print_links_num(file.f_stat.st_nlink, i.n_space.links);
+	ft_putchar(' ');
+
 	ft_putstr(i.owner);
 	print_n_spaces(i.n_space.owner);
+
 	print_n_spaces(2);
 	ft_putstr(i.group);
 	print_n_spaces(i.n_space.group);
+
 	if (is_char_dev(file.f_stat.st_mode) || is_blck_dev(file.f_stat.st_mode))
 		print_major_minor(file.f_stat.st_rdev,
 				i.n_space.major, i.n_space.minor);
@@ -33,6 +37,7 @@ void	print_one_line(t_file file, t_add_file_info i) //fixx it
 		print_n_spaces(i.n_space.size + 2);
 		ft_putnbr(file.f_stat.st_size);
 	}
+
 	ft_putchar(' ');
 	print_mod_time(file.f_stat.st_mtime);
 	ft_putchar(' ');

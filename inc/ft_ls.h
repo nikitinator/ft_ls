@@ -6,7 +6,7 @@
 /*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 21:05:50 by snikitin          #+#    #+#             */
-/*   Updated: 2018/03/29 16:07:08 by snikitin         ###   ########.fr       */
+/*   Updated: 2018/03/29 17:28:12 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@
 # define DAY 8
 # define TIME 11 
 # define YEAR 20 
+
+# define HALF_YEAR 15768000
 
 # define MAX_FILENAME_LEN 256
 
@@ -131,6 +133,8 @@ void		print_total(t_files files);
 void		print_type(mode_t st_mode);
 void		print_modes(mode_t st_mode);
 void		print_has_attr(char *full_path);//ensure that STICKY is the right word
+
+void		print_links_num(nlink_t num_link, t_byte num_space);
 
 void		print_mod_time(time_t mod_time);
 

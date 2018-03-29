@@ -6,7 +6,7 @@
 /*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 16:21:17 by snikitin          #+#    #+#             */
-/*   Updated: 2018/03/29 16:22:16 by snikitin         ###   ########.fr       */
+/*   Updated: 2018/03/29 17:28:30 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	print_n_spaces(int n)
 {
 	while (n > 0)
 	{
-		ft_putchar(c);
+		ft_putchar(' ');
 		n--;
 	}
 }
@@ -34,7 +34,7 @@ void	print_mod_time(time_t mod_time)
 	mod_time_str[DAY + 2] = '\0';
 	ft_putstr(mod_time_str + DAY);
 	ft_putchar(' ');
-	if (cur_time - mod_time > 15768000)
+	if (cur_time - mod_time > HALF_YEAR)
 	{
 		ft_putchar(' ');
 		mod_time_str[YEAR + 4] = '\0';
@@ -45,4 +45,10 @@ void	print_mod_time(time_t mod_time)
 		mod_time_str[TIME + 5] = '\0';
 		ft_putstr(mod_time_str + TIME);
 	}
+}
+
+void	print_links_num(nlink_t num_link, t_byte num_space)
+{
+	print_n_spaces(num_space);
+	ft_putnbr(num_link);
 }
