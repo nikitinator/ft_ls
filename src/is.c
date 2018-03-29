@@ -6,7 +6,7 @@
 /*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 13:39:50 by snikitin          #+#    #+#             */
-/*   Updated: 2018/03/27 17:17:14 by snikitin         ###   ########.fr       */
+/*   Updated: 2018/03/28 15:15:25 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int		is_char_dev(mode_t st_mode)
 {
 	return ((st_mode & S_IFMT) == S_IFCHR);
 }
+
 int		is_dir(mode_t st_mode)
 {
 	return ((st_mode & S_IFMT) == S_IFDIR);

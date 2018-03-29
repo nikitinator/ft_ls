@@ -6,7 +6,7 @@
 /*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 21:05:50 by snikitin          #+#    #+#             */
-/*   Updated: 2018/03/27 18:49:02 by snikitin         ###   ########.fr       */
+/*   Updated: 2018/03/29 16:07:08 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ typedef struct	s_params
 	char	show_hidden;
 	char	time_modif;
 
-	char	show_curr_dir;
+	t_byte		first;
 }				t_params;
 
 typedef struct	s_file
@@ -91,19 +91,20 @@ void		free_dirs(t_files dirs);//
 void		free_files(t_files files);
 
 void		reverse_files(t_files files);
-void		print_list(t_files);
 
 void		sort_files(t_files files, char time_modif);
 
 void		file_list_to_arr(t_list *file_list, t_files *files);
 
-void		print_list_long(t_files files, char *dir_path);
+void		print_files(t_files);
+void		print_files_long(t_files files, char *dir_path);
 
 
 void		del_list(void *content, size_t content_size);
-int			get_files_from_dir(t_file dir, t_files *files, t_byte show_hidden);
-int			get_files_dirs_from_dir(t_file dir, t_files *files, t_files *dirs,
-			t_byte show_hidden);
+
+int			get_files_from_dir(t_file dir, t_byte show_hidden, t_files *files);
+int			get_files_dirs_from_dir(t_file dir, t_byte show_hidden,
+		t_files *files, t_files *dirs);
 
 void		swap_files(t_file *file_1, t_file *file_2);
 void		reverse_files(t_files files);
@@ -129,11 +130,14 @@ void		print_n_spaces(int n);
 void		print_total(t_files files);
 void		print_type(mode_t st_mode);
 void		print_modes(mode_t st_mode);
-void		print_sticky_bit(char *full_path);//ensure that STICKY is the right word
+void		print_has_attr(char *full_path);//ensure that STICKY is the right word
 
 void		print_mod_time(time_t mod_time);
 
 short		get_digit_num(int n);
-void		ft_putnchar(int n , char c);
+
+void		puterror_perm_denied(char *file_name);
+void		print_major_minor(dev_t	st_rdev,
+		t_byte major_spaces, t_byte minor_spaces);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/26 20:27:17 by snikitin          #+#    #+#             */
-/*   Updated: 2018/03/27 16:18:30 by snikitin         ###   ########.fr       */
+/*   Updated: 2018/03/28 11:03:49 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*append_names_file_to_dir(char *dir_name, char *file_name)
 {
-	char	*to_free;	
+	char	*to_free;
 
 	if (!dir_name)
 		return (ft_strdup(file_name)); //maybe its fucked
@@ -34,7 +34,6 @@ int		get_full_paths(t_files files,  char *dir_name, t_add_file_info *f_i)
 {
 	size_t			i;
 
-	//handle_sym_links(files);
 	i = 0;
 	while (i < files.size)
 	{

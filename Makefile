@@ -6,7 +6,7 @@
 #    By: snikitin <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/13 20:40:56 by snikitin          #+#    #+#              #
-#    Updated: 2018/03/27 17:10:54 by snikitin         ###   ########.fr        #
+#    Updated: 2018/03/29 15:52:22 by snikitin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ SRC := main.c\
 	   free.c\
 	   sort_files.c\
 	   list_to_arr.c\
-	   print_list_long.c\
+	   print_files_long.c\
 	   get_from_dir.c\
 	   del_list.c\
 	   reverse.c\
@@ -42,7 +42,8 @@ SRC := main.c\
 	   print.c\
 	   print_mod_time.c\
 	   get_full_paths.c\
-	   ft_putnchar.c
+	   ft_putnchar.c\
+	   get_digit_num.c\
 
 # project object files
 

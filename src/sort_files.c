@@ -6,7 +6,7 @@
 /*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 15:12:39 by snikitin          #+#    #+#             */
-/*   Updated: 2018/03/23 14:17:45 by snikitin         ###   ########.fr       */
+/*   Updated: 2018/03/28 15:15:53 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	quick_sort_files(t_file *arr, t_uint size,
 
 	if (size <= 1)
 		return ;
-	swap_files(arr + 0, arr + size/2);
+	swap_files(arr + 0, arr + size / 2);
 	last = 0;
 	i = 1;
 	while (i < size)

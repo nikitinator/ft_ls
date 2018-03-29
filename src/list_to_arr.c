@@ -6,7 +6,7 @@
 /*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 18:53:33 by snikitin          #+#    #+#             */
-/*   Updated: 2018/03/23 20:23:57 by snikitin         ###   ########.fr       */
+/*   Updated: 2018/03/28 11:32:14 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void			file_list_to_arr(t_list *file_list, t_files *files)
 		while (file_list)
 		{
 			files->arr[i] = *(t_file *)file_list->content;
-			i++;
 			file_list = file_list->next;
+			i++;
 		}
 	}
 }

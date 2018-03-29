@@ -6,7 +6,7 @@
 /*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/16 21:06:56 by snikitin          #+#    #+#             */
-/*   Updated: 2018/03/22 13:27:31 by snikitin         ###   ########.fr       */
+/*   Updated: 2018/03/28 11:48:57 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,6 @@ int			get_arg_keys(int argc, char **argv, t_params *params)
 		}
 		i++;
 	}
+	params->first = 1;
 	return (0);
 }

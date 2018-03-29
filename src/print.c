@@ -6,11 +6,28 @@
 /*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 15:11:49 by snikitin          #+#    #+#             */
-/*   Updated: 2018/03/27 19:19:23 by snikitin         ###   ########.fr       */
+/*   Updated: 2018/03/28 15:17:31 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
+
+void	print_major_minor(dev_t	st_rdev, t_byte major_spaces, t_byte minor_spaces)
+{
+	int		major;
+	int		minor;
+
+	major = st_rdev >> 24 & 0xff;
+	minor = st_rdev & 0xffffff;
+	ft_putchar(' ');
+	ft_putchar(' ');
+	print_n_spaces(major_spaces);
+	ft_putnbr(major);
+	ft_putchar(',');
+	ft_putchar(' ');
+	print_n_spaces(minor_spaces);
+	ft_putnbr(minor);
+}
 
 void	print_total(t_files files)
 {
@@ -69,9 +86,11 @@ void	print_modes(mode_t st_mode)
 		ft_putstr((st_mode & S_IXOTH) ? "x" : "-");
 }
 
-void	print_sticky_bit(char *full_path)
+void	print_has_attr(char *full_path)
 {
-	if (listxattr(full_path, NULL, 0, 0))//XATTR_SHOWCOMPRESSION, XATTR_NOFOLLOW))
+	//if (listxattr(full_path, NULL, 1, XATTR_NOSECURITY))
+	if (listxattr(full_path, NULL, 1, XATTR_NOFOLLOW))
+	// XATTR_SHOWCOMPRESSION, XATTR_NOFOLLOW))
 		ft_putchar('@');
 	else
 		ft_putchar(' ');

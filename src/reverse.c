@@ -6,7 +6,7 @@
 /*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/22 17:42:34 by snikitin          #+#    #+#             */
-/*   Updated: 2018/03/23 14:36:23 by snikitin         ###   ########.fr       */
+/*   Updated: 2018/03/28 12:44:40 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	reverse_files(t_files files)
 {
-	int		i; //prover type
+	size_t	i;
 
 	i = 0;
 	while (i < files.size / 2)
