@@ -6,7 +6,7 @@
 #    By: snikitin <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/13 20:40:56 by snikitin          #+#    #+#              #
-#    Updated: 2018/03/29 16:22:21 by snikitin         ###   ########.fr        #
+#    Updated: 2018/03/30 18:53:43 by snikitin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,7 @@ SRC := main.c\
 	   print_2.c\
 	   get_full_paths.c\
 	   get_digit_num.c\
+	   puterror.c
 
 # project object files
 

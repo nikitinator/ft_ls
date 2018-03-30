@@ -6,18 +6,13 @@
 /*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 17:33:44 by snikitin          #+#    #+#             */
-/*   Updated: 2018/03/30 15:40:16 by snikitin         ###   ########.fr       */
+/*   Updated: 2018/03/30 18:46:40 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-void		puterror_perm_denied(char *file_name)
-{
-	ft_putstr_fd("ls: ", 2);
-	ft_putstr_fd(file_name, 2);
-	ft_putendl_fd(": Permission denied", 2);//consider changing it later
-}
+
 
 static void	print_dir_name(char *name, t_byte *first)
 {

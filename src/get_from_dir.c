@@ -6,11 +6,16 @@
 /*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/22 16:10:52 by snikitin          #+#    #+#             */
-/*   Updated: 2018/03/29 20:35:07 by snikitin         ###   ########.fr       */
+/*   Updated: 2018/03/30 18:25:08 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
+
+static int		is_dot_dir(char *name)
+{
+	return(ft_strequ(name, ".") || ft_strequ(name, ".."));
+}
 
 static int		get_files_list_from_dir(t_file dir, t_byte show_hidden,
 		t_list **file_list)
@@ -56,7 +61,7 @@ static int		get_files_dirs_lists_from_dir(t_file dir, t_byte show_hidden,
 		if (!lstat(full_file_name, &file_stat) &&
 				(show_hidden == 1 || !is_hidden(dp->d_name)))
 		{
-			if (is_dir(file_stat.st_mode))
+			if (is_dir(file_stat.st_mode) && !is_dot_dir(dp->d_name))
 				ft_list_push_front(dir_list, &(t_file)
 						{ft_strdup(full_file_name), file_stat}, sizeof(t_file));
 			ft_list_push_front(file_list,

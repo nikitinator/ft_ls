@@ -6,7 +6,7 @@
 /*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 16:21:17 by snikitin          #+#    #+#             */
-/*   Updated: 2018/03/30 14:25:12 by snikitin         ###   ########.fr       */
+/*   Updated: 2018/03/30 18:15:23 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,11 @@ void	print_mod_time(time_t mod_time)
 	if (ABS(cur_time - mod_time) > HALF_YEAR)
 	{
 		ft_putchar(' ');
-		mod_time_str[YEAR + 4] = '\0';
-		ft_putstr(mod_time_str + YEAR);
+		*ft_strrchr(mod_time_str + YEAR, '\n') = '\0';
+		mod_time_str += YEAR;
+		while (ft_iswhsp(*mod_time_str) && mod_time_str)
+			mod_time_str++;
+		ft_putstr(mod_time_str);
 	}
 	else
 	{

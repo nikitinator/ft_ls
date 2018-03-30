@@ -6,7 +6,7 @@
 /*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 12:34:07 by snikitin          #+#    #+#             */
-/*   Updated: 2018/03/29 19:23:06 by snikitin         ###   ########.fr       */
+/*   Updated: 2018/03/30 19:26:27 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,7 @@ static int		open_arg_to_lists(char **argv,
 						&(t_file){ft_strdup(*argv), f_stat}, sizeof(t_file));
 		}
 		else
-		{
-			ft_putstr_fd("ls: ", 2);
-			ft_putstr_fd(*argv, 2);
-			ft_putendl_fd(": No such file or directory", 2);//TODO razberis s errorami
-		}
+			puterror_no_file(*argv);
 		argv++;
 	}
 	return (0);
@@ -50,7 +46,10 @@ int				get_arg_files(int argc, char **argv, t_files *dirs, t_files *files)
 	ft_bzero(dirs, sizeof(t_files));
 	ft_bzero(files, sizeof(t_files));
 	i = 1;
-	while (i < argc && *(argv[i]) == '-')
+	while (i < argc && argv[i][0] == '-' && argv[i][1] 
+			&& !ft_strequ(argv[i], "--"))
+			i++;
+	if (i < argc && ft_strequ(argv[i], "--"))
 		i++;
 	if (i == argc)
 		argv[--i] = ".";

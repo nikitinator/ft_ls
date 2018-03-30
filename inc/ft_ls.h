@@ -6,7 +6,7 @@
 /*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 21:05:50 by snikitin          #+#    #+#             */
-/*   Updated: 2018/03/30 14:43:02 by snikitin         ###   ########.fr       */
+/*   Updated: 2018/03/30 18:58:07 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,6 +139,8 @@ void		print_total(t_files files);
 void		print_type(mode_t st_mode);
 void		print_modes(mode_t st_mode);
 void		print_has_ext_attr(char *full_path);//ensure that STICKY is the right word
+void		print_major_minor(dev_t	st_rdev,
+		t_byte major_spaces, t_byte minor_spaces);
 
 void		putnbr_align(int n, t_byte num_space);
 void		putstr_align(char *owner, t_byte num_space);
@@ -148,7 +150,8 @@ void		print_mod_time(time_t mod_time);
 short		get_digit_num(int n);
 
 void		puterror_perm_denied(char *file_name);
-void		print_major_minor(dev_t	st_rdev,
-		t_byte major_spaces, t_byte minor_spaces);
+void		puterror_no_key(char key);
+void		puterror_no_file(char *file_name);
+
 
 #endif
