@@ -6,7 +6,7 @@
 /*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/30 18:45:52 by snikitin          #+#    #+#             */
-/*   Updated: 2018/03/30 18:56:50 by snikitin         ###   ########.fr       */
+/*   Updated: 2018/03/30 21:18:27 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,3 @@ void		puterror_no_file(char *file_name)
 	ft_putstr_fd(file_name, 2);
 	ft_putendl_fd(": No such file or directory", 2);
 }
-

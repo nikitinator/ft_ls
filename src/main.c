@@ -6,7 +6,7 @@
 /*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/16 20:00:09 by snikitin          #+#    #+#             */
-/*   Updated: 2018/03/30 16:12:36 by snikitin         ###   ########.fr       */
+/*   Updated: 2018/03/30 21:25:43 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ int		main(int argc, char **argv)
 	t_files		dirs;
 	t_files		files;
 
-	if (get_arg_keys(argc, argv, &params))
-		return (-1);
-	if (get_arg_files(argc, argv, &dirs, &files))
-		return (-1);
+	if (get_arg_keys(argc, argv, &params) < 0)
+		return (1);
+	if (get_arg_files(argc, argv, &dirs, &files) < 0)
+		return (1);
 	list_files(files, NULL, params);
 	if (files.size)
 		params.first = 0;
@@ -33,9 +33,7 @@ int		main(int argc, char **argv)
 		free(dirs.arr[0].name);
 	}
 	else
-	{
 		list_dirs(dirs, params);
-	}
 	free_dirs(dirs);
 	free_files(files);
 	return (0);

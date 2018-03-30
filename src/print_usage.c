@@ -6,7 +6,7 @@
 /*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/18 13:52:39 by snikitin          #+#    #+#             */
-/*   Updated: 2018/03/29 23:13:05 by snikitin         ###   ########.fr       */
+/*   Updated: 2018/03/30 21:12:50 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 void	print_usage(void)
 {
-	ft_putendl("usage: ls [-Rlart1] [file ...]");
+	ft_putendl("usage: ft_ls [-Rlart1] [file ...]");
 }

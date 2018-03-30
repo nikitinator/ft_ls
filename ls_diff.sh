@@ -1,3 +1,5 @@
+#!/bin/sh
+
 make
 
 ls $@ > diff_ls
