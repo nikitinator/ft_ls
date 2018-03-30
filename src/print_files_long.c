@@ -6,45 +6,36 @@
 /*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/28 12:53:21 by snikitin          #+#    #+#             */
-/*   Updated: 2018/03/29 17:27:09 by snikitin         ###   ########.fr       */
+/*   Updated: 2018/03/30 14:38:27 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-void	print_one_line(t_file file, t_add_file_info i) //fixx it
+void			print_one_line(t_file file, t_add_file_info i)
 {
 	print_type(file.f_stat.st_mode);
 	print_modes(file.f_stat.st_mode);
-	print_has_attr(i.full_path);
+	print_has_ext_attr(i.full_path);
 	ft_putchar(' ');
-
-	print_links_num(file.f_stat.st_nlink, i.n_space.links);
+	putnbr_align((int)file.f_stat.st_nlink, i.n_space.links);
 	ft_putchar(' ');
-
-	ft_putstr(i.owner);
-	print_n_spaces(i.n_space.owner);
-
+	putstr_align(i.owner, i.n_space.owner);
 	print_n_spaces(2);
-	ft_putstr(i.group);
-	print_n_spaces(i.n_space.group);
-
+	putstr_align(i.group, i.n_space.group);
+	print_n_spaces(2);
 	if (is_char_dev(file.f_stat.st_mode) || is_blck_dev(file.f_stat.st_mode))
 		print_major_minor(file.f_stat.st_rdev,
 				i.n_space.major, i.n_space.minor);
 	else
-	{
-		print_n_spaces(i.n_space.size + 2);
-		ft_putnbr(file.f_stat.st_size);
-	}
-
+		putnbr_align(file.f_stat.st_size, i.n_space.size);
 	ft_putchar(' ');
 	print_mod_time(file.f_stat.st_mtime);
 	ft_putchar(' ');
 	ft_putendl(file.name);
 }
 
-void	handle_sym_links(t_files files, t_add_file_info *f_i)
+void			handle_sym_links(t_files files, t_add_file_info *f_i)
 {
 	t_uint	i;
 	char	*to_free;
@@ -68,7 +59,7 @@ void	handle_sym_links(t_files files, t_add_file_info *f_i)
 	}
 }
 
-int		get_owners_groups(t_files files, t_add_file_info *f_i)
+int				get_owners_groups(t_files files, t_add_file_info *f_i)
 {
 	struct passwd	*u_p;
 	struct group	*g_p;
@@ -86,7 +77,8 @@ int		get_owners_groups(t_files files, t_add_file_info *f_i)
 	return (0);
 }
 
-static int		get_file_info(t_files files, char *dir_path, t_add_file_info **f_i)
+static int		get_file_info(t_files files, char *dir_path,
+		t_add_file_info **f_i)
 {
 	if (!(*f_i = (t_add_file_info *)
 				malloc(sizeof(t_add_file_info) * files.size)))
@@ -110,7 +102,6 @@ void			print_files_long(t_files files, char *dir_path)
 		return ;
 	handle_sym_links(files, inf);
 	i = 0;
-	print_total(files);
 	while (i < files.size)
 	{
 		print_one_line(files.arr[i], inf[i]);

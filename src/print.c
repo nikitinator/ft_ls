@@ -6,25 +6,24 @@
 /*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 15:11:49 by snikitin          #+#    #+#             */
-/*   Updated: 2018/03/28 15:17:31 by snikitin         ###   ########.fr       */
+/*   Updated: 2018/03/30 14:49:26 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-void	print_major_minor(dev_t	st_rdev, t_byte major_spaces, t_byte minor_spaces)
+void	print_major_minor(dev_t st_rdev, t_byte major_spaces,
+		t_byte minor_spaces)
 {
 	int		major;
 	int		minor;
 
-	major = st_rdev >> 24 & 0xff;
-	minor = st_rdev & 0xffffff;
-	ft_putchar(' ');
+	major = MAJOR(st_rdev);
+	minor = MINOR(st_rdev);
 	ft_putchar(' ');
 	print_n_spaces(major_spaces);
 	ft_putnbr(major);
 	ft_putchar(',');
-	ft_putchar(' ');
 	print_n_spaces(minor_spaces);
 	ft_putnbr(minor);
 }
@@ -34,6 +33,8 @@ void	print_total(t_files files)
 	int			i;
 	blkcnt_t	total_blocks_num;
 
+	if (!files.size)
+		return ;
 	i = 0;
 	total_blocks_num = 0;
 	while (i < files.size)
@@ -86,11 +87,9 @@ void	print_modes(mode_t st_mode)
 		ft_putstr((st_mode & S_IXOTH) ? "x" : "-");
 }
 
-void	print_has_attr(char *full_path)
+void	print_has_ext_attr(char *full_path)
 {
-	//if (listxattr(full_path, NULL, 1, XATTR_NOSECURITY))
-	if (listxattr(full_path, NULL, 1, XATTR_NOFOLLOW))
-	// XATTR_SHOWCOMPRESSION, XATTR_NOFOLLOW))
+	if (listxattr(full_path, NULL, 1, XATTR_NOFOLLOW) > 0)
 		ft_putchar('@');
 	else
 		ft_putchar(' ');

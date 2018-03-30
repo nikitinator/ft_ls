@@ -6,7 +6,7 @@
 /*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 11:55:51 by snikitin          #+#    #+#             */
-/*   Updated: 2018/03/28 12:52:53 by snikitin         ###   ########.fr       */
+/*   Updated: 2018/03/29 20:46:54 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	print_files(t_files files)
 
 void	list_files(t_files files, char *dir_path, t_params params)
 {
-	if (files.size == 0)
+	if (!files.size)
 		return ;
 	sort_files(files, params.time_modif);
 	if (params.reverse)

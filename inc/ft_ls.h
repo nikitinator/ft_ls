@@ -6,7 +6,7 @@
 /*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 21:05:50 by snikitin          #+#    #+#             */
-/*   Updated: 2018/03/29 17:28:12 by snikitin         ###   ########.fr       */
+/*   Updated: 2018/03/30 14:43:02 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,12 @@
 # define HALF_YEAR 15768000
 
 # define MAX_FILENAME_LEN 256
+
+# define MAJOR(x) ((int32_t)(((u_int32_t)(x) >> 24) & 0xff))
+# define MINOR(x) ((int32_t)((x) & 0xffffff))
+
+# define MINORBITS 20
+# define MINORMASK ((1U << MINORBITS) - 1)
 
 typedef unsigned char t_byte;
 typedef unsigned short t_ushort;
@@ -87,7 +93,7 @@ int			get_arg_files(int argc, char **argv, t_files *dirs, t_files *files);
 
 void		list_files(t_files files, char *dir_path, t_params params);
 void		list_dirs(t_files dirs, t_params params);
-void		list_dir(t_file dir, t_params params);
+int			list_dir(t_file dir, t_params params);
 
 void		free_dirs(t_files dirs);//
 void		free_files(t_files files);
@@ -132,9 +138,10 @@ void		print_n_spaces(int n);
 void		print_total(t_files files);
 void		print_type(mode_t st_mode);
 void		print_modes(mode_t st_mode);
-void		print_has_attr(char *full_path);//ensure that STICKY is the right word
+void		print_has_ext_attr(char *full_path);//ensure that STICKY is the right word
 
-void		print_links_num(nlink_t num_link, t_byte num_space);
+void		putnbr_align(int n, t_byte num_space);
+void		putstr_align(char *owner, t_byte num_space);
 
 void		print_mod_time(time_t mod_time);
 

@@ -6,7 +6,7 @@
 /*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/16 20:00:09 by snikitin          #+#    #+#             */
-/*   Updated: 2018/03/28 15:22:48 by snikitin         ###   ########.fr       */
+/*   Updated: 2018/03/30 15:53:58 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,13 @@ int		main(int argc, char **argv)
 	if (get_arg_files(argc, argv, &dirs, &files))
 		return (-1);
 	list_files(files, NULL, params);
+	if (files.size)
+		params.first = 0;
 	if (dirs.size == 1)
 	{
 		params.first = 0;
-		list_dir(dirs.arr[0], params);
+		if (list_dir(dirs.arr[0], params))
+			puterror_perm_denied("");
 		free(dirs.arr[0].name);
 	}
 	else

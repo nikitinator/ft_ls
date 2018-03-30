@@ -6,7 +6,7 @@
 /*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 15:09:03 by snikitin          #+#    #+#             */
-/*   Updated: 2018/03/29 15:53:01 by snikitin         ###   ########.fr       */
+/*   Updated: 2018/03/30 14:36:45 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,14 @@ static void	get_width(t_space_num *max, t_files files, t_add_file_info *f_i)
 		f_i[i].n_space.size = get_digit_num(files.arr[i].f_stat.st_size);
 		f_i[i].n_space.links = get_digit_num(files.arr[i].f_stat.st_nlink);
 		f_i[i].n_space.major =
-			get_digit_num(files.arr[i].f_stat.st_rdev >> 24 & 0xff);
+			get_digit_num(files.arr[i].f_stat.st_rdev >> 24 & 0xff);//
 		f_i[i].n_space.minor =
-			get_digit_num(files.arr[i].f_stat.st_rdev & 0xffffff);
+			get_digit_num(files.arr[i].f_stat.st_rdev & 0xffffff);//
 		update_max_width(max, f_i[i].n_space);
 		i++;
 	}
+	if ((max->major || max->minor) && (max->major + max->minor) > max->size)
+		max->size = max->major + max->minor + 2;
 }
 
 void		get_space_num(t_files files, t_add_file_info *f_i)

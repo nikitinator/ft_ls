@@ -6,7 +6,7 @@
 /*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/16 21:06:56 by snikitin          #+#    #+#             */
-/*   Updated: 2018/03/28 11:48:57 by snikitin         ###   ########.fr       */
+/*   Updated: 2018/03/29 23:11:29 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ static int	get_params_key(char *key, t_params *par)
 			par->recursive = 1;
 		else if (key[i] == 't')
 			par->time_modif = 1;
+		else if (key[i] == '1')
+			;
 		else
 		{
 			ft_putstr_fd("ls: illegal option -- ", 2); //ensure the fd

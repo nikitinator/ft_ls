@@ -6,7 +6,7 @@
 /*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 15:12:39 by snikitin          #+#    #+#             */
-/*   Updated: 2018/03/28 15:15:53 by snikitin         ###   ########.fr       */
+/*   Updated: 2018/03/30 15:42:37 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int		file_cmp_lexicograph(t_file file_1, t_file file_2)
 
 int		file_cmp_time_modif(t_file file_1, t_file file_2)
 {
+	if ((file_2.f_stat.st_mtime - file_1.f_stat.st_mtime) == 0)
+		return (ft_strcmp(file_1.name, file_2.name));
 	return (file_2.f_stat.st_mtime - file_1.f_stat.st_mtime);
 }
 
