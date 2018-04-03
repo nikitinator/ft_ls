@@ -6,15 +6,13 @@
 /*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 17:33:44 by snikitin          #+#    #+#             */
-/*   Updated: 2018/03/30 18:46:40 by snikitin         ###   ########.fr       */
+/*   Updated: 2018/04/03 18:29:35 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-
-
-static void	print_dir_name(char *name, t_byte *first)
+void	print_dir_name(char *name, t_byte *first)
 {
 	if (!*first)
 		ft_putchar('\n');

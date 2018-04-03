@@ -6,7 +6,7 @@
 /*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/16 20:00:09 by snikitin          #+#    #+#             */
-/*   Updated: 2018/03/30 21:25:43 by snikitin         ###   ########.fr       */
+/*   Updated: 2018/04/03 18:51:13 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,22 @@ int		main(int argc, char **argv)
 	t_files		dirs;
 	t_files		files;
 
-	if (get_arg_keys(argc, argv, &params) < 0)
+	(void)argc;
+	if (get_arg_keys(&argv, &params))
 		return (1);
-	if (get_arg_files(argc, argv, &dirs, &files) < 0)
+	params.first = 1;//
+	if (get_arg_files(argv, &params, &dirs, &files))
 		return (1);
 	list_files(files, NULL, params);
 	if (files.size)
-		params.first = 0;
+		params.first = 0;//
 	if (dirs.size == 1)
 	{
+		if (params.first == 0)
+		{
+			params.first = 1;
+			print_dir_name(dirs.arr[0].name, &params.first);
+		}
 		params.first = 0;
 		if (list_dir(dirs.arr[0], params))
 			puterror_perm_denied("");

@@ -6,7 +6,7 @@
 /*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 21:05:50 by snikitin          #+#    #+#             */
-/*   Updated: 2018/03/30 18:58:07 by snikitin         ###   ########.fr       */
+/*   Updated: 2018/04/03 18:48:31 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ typedef struct	s_params
 	char	reverse;
 	char	show_hidden;
 	char	time_modif;
-
 	t_byte		first;
 }				t_params;
 
@@ -88,8 +87,10 @@ typedef struct	s_add_file_info
 
 void		print_usage(void);
 
-int			get_arg_keys(int argc, char **argv, t_params *par);
-int			get_arg_files(int argc, char **argv, t_files *dirs, t_files *files);
+int			get_arg_keys(char ***argv, t_params *par);
+int			get_arg_files(char **argv, t_params *par, t_files *dirs, t_files *files);
+
+void		print_dir_name(char *name, t_byte *first);
 
 void		list_files(t_files files, char *dir_path, t_params params);
 void		list_dirs(t_files dirs, t_params params);
