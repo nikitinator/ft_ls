@@ -6,19 +6,27 @@
 /*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 12:34:07 by snikitin          #+#    #+#             */
-/*   Updated: 2018/04/03 20:34:06 by snikitin         ###   ########.fr       */
+/*   Updated: 2018/04/05 15:25:48 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-static int		open_arg_to_lists(char **argv, t_params *par,
-		t_list **file_list, t_list **dir_list)
+//int				get_stat(char *path, char stat *buf, t_byte long_format)
+//{
+//	if (long_format)
+//		return (!lstat(*argv, &f_stat));
+//	return ((!stat(*argv, &f_stat)) || (!lstat(*argv, &f_stat)));
+//}
+
+static int		open_arg_to_lists_long(char **argv, t_list **file_list,
+		t_list **dir_list, t_list **error_list)
 {
 	struct stat	f_stat;
 
 	*file_list = NULL;
 	*dir_list = NULL;
+	*error_list = NULL;
 	while (*argv)
 	{
 		if (!lstat(*argv, &f_stat))
@@ -29,17 +37,16 @@ static int		open_arg_to_lists(char **argv, t_params *par,
 				ft_list_push_front(file_list,
 						&(t_file){ft_strdup(*argv), f_stat}, sizeof(t_file));
 		else
-		{
-			puterror_no_file(*argv);
-			par->first = 0;
-		}
+			ft_list_push_front(error_list,
+						&(t_file){ft_strdup(*argv), f_stat}, sizeof(t_file));
+
 		argv++;
 	}
 	return (0);
 }
 
-static int		open_arg_to_lists_long(char **argv, t_params *par,
-		t_list **file_list, t_list **dir_list)
+static int		open_arg_to_lists(char **argv, t_list **file_list,
+		t_list **dir_list, t_list **error_list)
 {
 	struct stat	f_stat;
 
@@ -55,33 +62,31 @@ static int		open_arg_to_lists_long(char **argv, t_params *par,
 				ft_list_push_front(file_list,
 						&(t_file){ft_strdup(*argv), f_stat}, sizeof(t_file));
 		else
-		{
-			puterror_no_file(*argv);
-			par->first = 0;
-		}
+			ft_list_push_front(error_list,
+						&(t_file){ft_strdup(*argv), f_stat}, sizeof(t_file));
 		argv++;
 	}
 	return (0);
 }
 
-int				get_arg_files(char **argv, t_params *params,
-		t_files *dirs, t_files *files)
+int				get_arg_files(char **argv, t_params params, t_arg *argf)	
 {
 	t_list	*file_list;
 	t_list	*dir_list;
+	t_list	*error_list;
 
-	ft_bzero(dirs, sizeof(t_files));
-	ft_bzero(files, sizeof(t_files));
+	ft_bzero(argf, sizeof(t_arg));
 	if (!*argv)
 		*(--argv) = ".";
-
-	if (params->long_format)
-		open_arg_to_lists_long(argv, params, &file_list, &dir_list);
+	if (params.long_format)
+		open_arg_to_lists_long(argv, &file_list, &dir_list, &error_list);
 	else
-		open_arg_to_lists(argv, params, &file_list, &dir_list);
-	file_list_to_arr(file_list, files);
-	file_list_to_arr(dir_list, dirs);
+		open_arg_to_lists(argv, &file_list, &dir_list, &error_list);
+	file_list_to_arr(file_list, &argf->files);
+	file_list_to_arr(dir_list, &argf->dirs);
+	file_list_to_arr(error_list, &argf->errors);
 	ft_lstdel(&file_list, del_list);
 	ft_lstdel(&dir_list, del_list);
+	ft_lstdel(&error_list, del_list);
 	return (0);
 }

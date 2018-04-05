@@ -6,7 +6,7 @@
 /*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/28 12:53:21 by snikitin          #+#    #+#             */
-/*   Updated: 2018/03/30 17:11:49 by snikitin         ###   ########.fr       */
+/*   Updated: 2018/04/05 20:27:55 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,14 @@ void			print_one_line(t_file file, t_add_file_info i)
 	putstr_align(i.owner, i.n_space.owner);
 	print_n_spaces(2);
 	putstr_align(i.group, i.n_space.group);
+
 	print_n_spaces(2);
 	if (is_char_dev(file.f_stat.st_mode) || is_blck_dev(file.f_stat.st_mode))
 		print_major_minor(file.f_stat.st_rdev,
 				i.n_space.major, i.n_space.minor);
 	else
 		putnbr_align(file.f_stat.st_size, i.n_space.size);
+
 	ft_putchar(' ');
 	print_mod_time(file.f_stat.st_mtime);
 	ft_putchar(' ');
@@ -105,7 +107,7 @@ void			print_files_long(t_files files, char *dir_path)
 	while (i < files.size)
 	{
 		print_one_line(files.arr[i], inf[i]);
-		free(files.arr[i].name);
+		//free(files.arr[i].name);
 		free(inf[i].owner);
 		free(inf[i].group);
 		free(inf[i].full_path);

@@ -6,10 +6,9 @@
 /*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 21:05:50 by snikitin          #+#    #+#             */
-/*   Updated: 2018/04/03 18:48:31 by snikitin         ###   ########.fr       */
+/*   Updated: 2018/04/05 17:15:09 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef FT_LS_H
 # define FT_LS_H
@@ -62,7 +61,7 @@ typedef struct	s_params
 	char	reverse;
 	char	show_hidden;
 	char	time_modif;
-	t_byte		first;
+	t_byte	first_time;
 }				t_params;
 
 typedef struct	s_file
@@ -77,6 +76,13 @@ typedef struct	s_files
 	t_ushort	size;	
 }				t_files;
 
+typedef struct	s_arg
+{
+	t_files		files;
+	t_files		dirs;
+	t_files		errors;
+}				t_arg;	
+
 typedef struct	s_add_file_info
 {
 	char		*full_path;
@@ -88,9 +94,10 @@ typedef struct	s_add_file_info
 void		print_usage(void);
 
 int			get_arg_keys(char ***argv, t_params *par);
-int			get_arg_files(char **argv, t_params *par, t_files *dirs, t_files *files);
+int			get_arg_files(char **argv, t_params par, t_arg *argf);
 
-void		print_dir_name(char *name, t_byte *first);
+//void		print_dir_name(char *name);
+void		print_dir_name(char *name, t_byte *first_time);
 
 void		list_files(t_files files, char *dir_path, t_params params);
 void		list_dirs(t_files dirs, t_params params);
@@ -108,7 +115,6 @@ void		file_list_to_arr(t_list *file_list, t_files *files);
 void		print_files(t_files);
 void		print_files_long(t_files files, char *dir_path);
 
-
 void		del_list(void *content, size_t content_size);
 
 int			get_files_from_dir(t_file dir, t_byte show_hidden, t_files *files);
@@ -120,7 +126,6 @@ void		reverse_files(t_files files);
 
 void		get_space_num(t_files files, t_add_file_info *f_i);
 int			get_owners_groups(t_files files, t_add_file_info *inf);
-
 
 int			is_blck_dev(mode_t st_mode);
 int			is_char_dev(mode_t st_mode);
@@ -153,6 +158,5 @@ short		get_digit_num(int n);
 void		puterror_perm_denied(char *file_name);
 void		puterror_no_key(char key);
 void		puterror_no_file(char *file_name);
-
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/26 20:27:17 by snikitin          #+#    #+#             */
-/*   Updated: 2018/03/30 15:08:39 by snikitin         ###   ########.fr       */
+/*   Updated: 2018/04/05 18:51:02 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,8 @@ char	*append_names_file_to_dir(char *dir_name, char *file_name)
 	if (!dir_name)
 		return (ft_strdup(file_name)); //maybe its fucked
 	to_free = 0;
-	//if (dir_name[ft_strlen(dir_name) - 1] != '/')
-	//{
-		dir_name = ft_strjoin(dir_name, "/");
-		to_free = dir_name;
-	//}
+	dir_name = ft_strjoin(dir_name, "/");
+	to_free = dir_name;
 	dir_name = ft_strjoin(dir_name, file_name);
 	if (to_free)
 		free(to_free);

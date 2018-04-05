@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   get_time.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/19 19:37:44 by snikitin          #+#    #+#             */
-/*   Updated: 2018/04/05 17:54:24 by snikitin         ###   ########.fr       */
+/*   Created: 2018/04/05 19:09:45 by snikitin          #+#    #+#             */
+/*   Updated: 2018/04/05 19:16:42 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_ls.h"
+#include <sys/stat.h>
+#include <time.h>
+#include <stdio.h>
 
-void	free_files(t_files files)
+int		main(int argc, char **argv)
 {
-	int		i;
+	char *time_str;
+	time_t time;
+	struct stat f_stat;
 
-	i = 0;
-	if (files.arr)
-		while (i < files.size)
-		{
-			free(files.arr[i].name);
-			i++;
-		}
-	if (files.arr)
-		free(files.arr);
+	if (argc == 2)
+	{
+		lstat(argv[1], &f_stat);
+		time_str = ctime(&f_stat.st_mtime);
+		printf("\n");
+		printf("%s", time_str);
+		printf("\n");
+	}
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 15:09:03 by snikitin          #+#    #+#             */
-/*   Updated: 2018/03/30 17:18:51 by snikitin         ###   ########.fr       */
+/*   Updated: 2018/04/05 20:59:39 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,13 @@ static void	get_width(t_space_num *max, t_files files, t_add_file_info *f_i)
 		f_i[i].n_space.minor =
 			get_digit_num(MINOR(files.arr[i].f_stat.st_rdev));//
 		update_max_width(max, f_i[i].n_space);
+		if ((is_char_dev(files.arr[i].f_stat.st_mode) ||
+					is_blck_dev(files.arr[i].f_stat.st_mode))
+				&& ((max->major + max->minor) > max->size))
+			max->size = max->major + max->minor + 1;
 		i++;
 	}
-	if ((is_char_dev(files.arr[i].f_stat.st_mode) ||
-				is_blck_dev(files.arr[i].f_stat.st_mode))
-			&& ((max->major + max->minor) > max->size))
-		max->size = max->major + max->minor + 2;
+	//max->minor = 4;
 }
 
 void		get_space_num(t_files files, t_add_file_info *f_i)
@@ -59,6 +60,8 @@ void		get_space_num(t_files files, t_add_file_info *f_i)
 	t_space_num max_width;
 
 	ft_bzero(&max_width, sizeof(t_space_num));
+	max_width.minor = 3;
+	max_width.minor = 4;
 	get_width(&max_width, files, f_i);
 	i = 0;
 	while (i < files.size)

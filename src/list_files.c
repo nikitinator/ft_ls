@@ -6,7 +6,7 @@
 /*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 11:55:51 by snikitin          #+#    #+#             */
-/*   Updated: 2018/03/29 20:46:54 by snikitin         ###   ########.fr       */
+/*   Updated: 2018/04/05 18:10:12 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	print_files(t_files files)
 	while (i < files.size)
 	{
 		ft_putendl(files.arr[i].name);
-		free(files.arr[i].name);
 		i++;
 	}
 }
@@ -36,6 +35,6 @@ void	list_files(t_files files, char *dir_path, t_params params)
 		print_files_long(files, dir_path);
 	else
 		print_files(files);
-	if (dir_path)
-		free(dir_path);
+//	if (dir_path)
+//		free(dir_path);
 }

@@ -6,7 +6,7 @@
 /*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 15:11:49 by snikitin          #+#    #+#             */
-/*   Updated: 2018/04/03 20:10:25 by snikitin         ###   ########.fr       */
+/*   Updated: 2018/04/05 21:03:51 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ void	print_major_minor(dev_t st_rdev, t_byte major_spaces,
 {
 	int		major;
 	int		minor;
+	(void) minor_spaces;//
 
 	major = MAJOR(st_rdev);
 	minor = MINOR(st_rdev);
-	ft_putchar(' ');
 	print_n_spaces(major_spaces);
 	ft_putnbr(major);
 	ft_putchar(',');

@@ -6,18 +6,30 @@
 /*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 17:33:44 by snikitin          #+#    #+#             */
-/*   Updated: 2018/04/03 18:29:35 by snikitin         ###   ########.fr       */
+/*   Updated: 2018/04/05 18:51:53 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-void	print_dir_name(char *name, t_byte *first)
+//void	print_dir_name(char *name)
+//{
+//	static char first_time = 1;
+//
+//	if (!first_time)
+//		ft_putchar('\n');
+//	else
+//		first_time = 0;
+//	ft_putstr(name);
+//	ft_putendl(":");
+//}
+
+void	print_dir_name(char *name, t_byte *first_time)
 {
-	if (!*first)
+	if (!*first_time)
 		ft_putchar('\n');
 	else
-		*first = 0;
+		*first_time = 0;
 	ft_putstr(name);
 	ft_putendl(":");
 }
@@ -31,7 +43,8 @@ int		list_dir_normal(t_file dir, t_params params)
 		return (1);
 	if (params.long_format)
 		print_total(files);
-	list_files(files, ft_strdup(dir.name), params);
+	list_files(files, dir.name, params);// ft_strdup dirs_name
+
 	free_files(files);
 	return (0);
 }
@@ -47,10 +60,10 @@ int		list_dir_recurs(t_file dir, t_params params)
 		return (1);
 	if (params.long_format)
 		print_total(files);
-	list_files(files, ft_strdup(dir.name),  params);
+	list_files(files, dir.name,  params);// ft_strdup dirs_name
 	list_dirs(dirs, params);
 	free_files(files);
-	free_dirs(dirs);
+	free_files(dirs);
 	return (0);	
 	//free(dir.name);
 }
@@ -75,10 +88,10 @@ void	list_dirs(t_files dirs, t_params params)
 	i = 0;
 	while (i < dirs.size)
 	{
-		print_dir_name(dirs.arr[i].name, &params.first);//stydno (\n)
+		print_dir_name(dirs.arr[i].name, &params.first_time);
 		if (list_dir(dirs.arr[i], params))
 			puterror_perm_denied(dirs.arr[i].name);
-		free(dirs.arr[i].name);
+		//free(dirs.arr[i].name);
 		i++;
 	}
 }
