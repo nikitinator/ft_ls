@@ -6,7 +6,7 @@
 /*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/22 16:10:52 by snikitin          #+#    #+#             */
-/*   Updated: 2018/03/30 18:25:08 by snikitin         ###   ########.fr       */
+/*   Updated: 2018/04/06 17:57:48 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int		is_dot_dir(char *name)
 {
-	return(ft_strequ(name, ".") || ft_strequ(name, ".."));
+	return (ft_strequ(name, ".") || ft_strequ(name, ".."));
 }
 
 static int		get_files_list_from_dir(t_file dir, t_byte show_hidden,

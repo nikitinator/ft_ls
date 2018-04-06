@@ -6,13 +6,13 @@
 /*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/16 21:06:56 by snikitin          #+#    #+#             */
-/*   Updated: 2018/04/03 18:04:35 by snikitin         ###   ########.fr       */
+/*   Updated: 2018/04/06 18:04:00 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-char	get_params_key(char *key, t_params *par)
+static char	get_params_key(char *key, t_params *par)
 {
 	short	i;
 
@@ -30,7 +30,7 @@ char	get_params_key(char *key, t_params *par)
 		else if (key[i] == 't')
 			par->time_modif = 1;
 		else if (key[i] == '1')
-			;
+			par->long_format = 0;
 		else
 			return (key[i]);
 	}
@@ -46,23 +46,19 @@ int			get_arg_keys(char ***argv, t_params *params)
 	av = *argv;
 	ft_bzero(params, sizeof(t_params));
 	i = 1;
-	while (av[i] && av[i][0] == '-')
+	while (av[i] && av[i][0] == '-' && !ft_strequ(av[i], "-"))
 	{
-		if (ft_strequ(av[i], "-"))
-		{
-			break;
-		}
 		if (ft_strequ(av[i], "--"))
 		{
 			i++;
-			break;
+			break ;
 		}
 		if ((invalid_char = get_params_key(av[i], params)))
 		{
 			puterror_no_key(invalid_char);
 			print_usage();
 			return (1);
-		} 
+		}
 		i++;
 	}
 	*argv = av + i;

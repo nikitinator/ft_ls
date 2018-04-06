@@ -6,7 +6,7 @@
 /*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 21:05:50 by snikitin          #+#    #+#             */
-/*   Updated: 2018/04/05 17:15:09 by snikitin         ###   ########.fr       */
+/*   Updated: 2018/04/06 18:05:42 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,4 +159,5 @@ void		puterror_perm_denied(char *file_name);
 void		puterror_no_key(char key);
 void		puterror_no_file(char *file_name);
 
+char		*ft_itoa_base(t_uint value, int base);
 #endif

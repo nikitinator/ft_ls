@@ -6,7 +6,7 @@
 /*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 15:09:03 by snikitin          #+#    #+#             */
-/*   Updated: 2018/04/05 20:59:39 by snikitin         ###   ########.fr       */
+/*   Updated: 2018/04/06 17:54:08 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,6 @@ static void	update_max_width(t_space_num *max, t_space_num current)
 		max->size = current.size;
 	if (current.links > max->links)
 		max->links = current.links;
-	if (current.major > max->major)
-		max->major = current.major;
-	if (current.minor > max->minor)
-		max->minor = current.minor;
 }
 
 static void	get_width(t_space_num *max, t_files files, t_add_file_info *f_i)
@@ -41,9 +37,9 @@ static void	get_width(t_space_num *max, t_files files, t_add_file_info *f_i)
 		f_i[i].n_space.size = get_digit_num((int)files.arr[i].f_stat.st_size);
 		f_i[i].n_space.links = get_digit_num(files.arr[i].f_stat.st_nlink);
 		f_i[i].n_space.major =
-			get_digit_num(MAJOR(files.arr[i].f_stat.st_rdev));//
+			get_digit_num(MAJOR(files.arr[i].f_stat.st_rdev));
 		f_i[i].n_space.minor =
-			get_digit_num(MINOR(files.arr[i].f_stat.st_rdev));//
+			get_digit_num(MINOR(files.arr[i].f_stat.st_rdev));
 		update_max_width(max, f_i[i].n_space);
 		if ((is_char_dev(files.arr[i].f_stat.st_mode) ||
 					is_blck_dev(files.arr[i].f_stat.st_mode))
@@ -51,7 +47,6 @@ static void	get_width(t_space_num *max, t_files files, t_add_file_info *f_i)
 			max->size = max->major + max->minor + 1;
 		i++;
 	}
-	//max->minor = 4;
 }
 
 void		get_space_num(t_files files, t_add_file_info *f_i)
@@ -60,7 +55,7 @@ void		get_space_num(t_files files, t_add_file_info *f_i)
 	t_space_num max_width;
 
 	ft_bzero(&max_width, sizeof(t_space_num));
-	max_width.minor = 3;
+	max_width.major = 3;
 	max_width.minor = 4;
 	get_width(&max_width, files, f_i);
 	i = 0;

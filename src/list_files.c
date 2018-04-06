@@ -6,11 +6,11 @@
 /*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 11:55:51 by snikitin          #+#    #+#             */
-/*   Updated: 2018/04/05 18:10:12 by snikitin         ###   ########.fr       */
+/*   Updated: 2018/04/06 17:52:51 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_ls.h" 
+#include "ft_ls.h"
 
 void	print_files(t_files files)
 {
@@ -35,6 +35,4 @@ void	list_files(t_files files, char *dir_path, t_params params)
 		print_files_long(files, dir_path);
 	else
 		print_files(files);
-//	if (dir_path)
-//		free(dir_path);
 }

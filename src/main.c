@@ -6,7 +6,7 @@
 /*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/16 20:00:09 by snikitin          #+#    #+#             */
-/*   Updated: 2018/04/05 20:05:03 by snikitin         ###   ########.fr       */
+/*   Updated: 2018/04/06 17:49:49 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,12 @@ static void	print_errors(t_files errors)
 		puterror_no_file(errors.arr[i].name);
 		i++;
 	}
-}	
+}
 
-void	list_arg_files(t_arg arg_f, t_params *par)
+static void	list_arg_files(t_arg arg_f, t_params *par)
 {
 	sort_files(arg_f.errors, 0);
 	print_errors(arg_f.errors);
-	
 	par->first_time = 1;
 	list_files(arg_f.files, NULL, *par);
 	if (arg_f.files.size)
@@ -49,7 +48,7 @@ void	list_arg_files(t_arg arg_f, t_params *par)
 	}
 }
 
-int		main(int argc, char **argv)
+int			main(int argc, char **argv)
 {
 	t_params	params;
 	t_arg		arg_files;
@@ -63,8 +62,5 @@ int		main(int argc, char **argv)
 	free_files(arg_files.dirs);
 	free_files(arg_files.files);
 	free_files(arg_files.errors);
-	//ft_putendl("KONETS");
-	//while (1)
-	//	;
 	return (0);
 }

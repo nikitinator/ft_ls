@@ -6,18 +6,11 @@
 /*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 12:34:07 by snikitin          #+#    #+#             */
-/*   Updated: 2018/04/05 15:25:48 by snikitin         ###   ########.fr       */
+/*   Updated: 2018/04/06 17:55:38 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
-
-//int				get_stat(char *path, char stat *buf, t_byte long_format)
-//{
-//	if (long_format)
-//		return (!lstat(*argv, &f_stat));
-//	return ((!stat(*argv, &f_stat)) || (!lstat(*argv, &f_stat)));
-//}
 
 static int		open_arg_to_lists_long(char **argv, t_list **file_list,
 		t_list **dir_list, t_list **error_list)
@@ -39,7 +32,6 @@ static int		open_arg_to_lists_long(char **argv, t_list **file_list,
 		else
 			ft_list_push_front(error_list,
 						&(t_file){ft_strdup(*argv), f_stat}, sizeof(t_file));
-
 		argv++;
 	}
 	return (0);
@@ -69,7 +61,7 @@ static int		open_arg_to_lists(char **argv, t_list **file_list,
 	return (0);
 }
 
-int				get_arg_files(char **argv, t_params params, t_arg *argf)	
+int				get_arg_files(char **argv, t_params params, t_arg *argf)
 {
 	t_list	*file_list;
 	t_list	*dir_list;

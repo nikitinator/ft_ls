@@ -6,26 +6,16 @@
 /*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 15:11:49 by snikitin          #+#    #+#             */
-/*   Updated: 2018/04/05 21:03:51 by snikitin         ###   ########.fr       */
+/*   Updated: 2018/04/06 18:00:38 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-void	print_major_minor(dev_t st_rdev, t_byte major_spaces,
-		t_byte minor_spaces)
+void	print_n_spaces(int n)
 {
-	int		major;
-	int		minor;
-	(void) minor_spaces;//
-
-	major = MAJOR(st_rdev);
-	minor = MINOR(st_rdev);
-	print_n_spaces(major_spaces);
-	ft_putnbr(major);
-	ft_putchar(',');
-	print_n_spaces(minor_spaces);
-	ft_putnbr(minor);
+	while (n-- > 0)
+		ft_putchar(' ');
 }
 
 void	print_total(t_files files)

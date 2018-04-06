@@ -6,7 +6,7 @@
 #    By: snikitin <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/13 20:40:56 by snikitin          #+#    #+#              #
-#    Updated: 2018/04/05 18:44:47 by snikitin         ###   ########.fr        #
+#    Updated: 2018/04/06 17:47:07 by snikitin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,8 @@ SRC := main.c\
 	   print_2.c\
 	   get_full_paths.c\
 	   get_digit_num.c\
-	   puterror.c
+	   puterror.c\
+	   ft_itoa_base.c
 
 # project object files
 
@@ -60,7 +61,7 @@ LIBFT_FLAGS :=  -lft -L $(LIBFT_DIR)
 
 # compilation flags
 
-CC_FLAGS := -Wall -Wextra -Werror -g -O
+CC_FLAGS := -Wall -Wextra -Werror -O3
 
 
 # linking flags
@@ -76,7 +77,6 @@ HEADER_FLAGS := -I $(INC_DIR) -I $(LIBFT_INC)
 
 CC := gcc
 
-
 # rules
 
 all: $(NAME)
@@ -88,7 +88,7 @@ $(OBJ): | $(OBJ_DIR)
 
 $(OBJ_DIR):
 	mkdir $(OBJ_DIR)
-#$(INC)
+
 $(OBJ_DIR)%.o: %.c $(INC)
 	$(CC) -c $< -o $@ $(CC_FLAGS) $(HEADER_FLAGS)
 
