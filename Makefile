@@ -6,7 +6,7 @@
 #    By: snikitin <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/13 20:40:56 by snikitin          #+#    #+#              #
-#    Updated: 2018/04/09 12:26:44 by snikitin         ###   ########.fr        #
+#    Updated: 2018/04/09 17:50:13 by snikitin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,7 +58,7 @@ INC = $(addprefix $(INC_DIR), $(NAME:=.h))
 # libraries
 
 LIBFT =         $(LIBFT_DIR)libft.a
-LIBFT_DIR :=    $(LIB_DIR)libft
+LIBFT_DIR :=    $(LIB_DIR)libft/
 LIBFT_INC :=    $(LIBFT_DIR)/
 LIBFT_FLAGS :=  -lft -L $(LIBFT_DIR)
 
@@ -80,7 +80,6 @@ HEADER_FLAGS := -I $(INC_DIR) -I $(LIBFT_INC)
 # compiler
 
 CC := gcc
-
 
 # rules
 

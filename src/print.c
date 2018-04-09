@@ -6,7 +6,7 @@
 /*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 15:11:49 by snikitin          #+#    #+#             */
-/*   Updated: 2018/04/09 12:24:39 by snikitin         ###   ########.fr       */
+/*   Updated: 2018/04/09 17:54:55 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	print_modes(mode_t st_mode)
 	ft_putstr((st_mode & S_IRUSR) ? "r" : "-");
 	ft_putstr((st_mode & S_IWUSR) ? "w" : "-");
 	if (st_mode & S_ISUID)
-		ft_putstr((st_mode & S_IXGRP) ? "s" : "S");
+		ft_putstr((st_mode & S_IXUSR) ? "s" : "S");
 	else
 		ft_putstr((st_mode & S_IXUSR) ? "x" : "-");
 	ft_putstr((st_mode & S_IRGRP) ? "r" : "-");
