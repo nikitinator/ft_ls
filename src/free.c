@@ -6,7 +6,7 @@
 /*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 19:37:44 by snikitin          #+#    #+#             */
-/*   Updated: 2018/04/05 17:54:24 by snikitin         ###   ########.fr       */
+/*   Updated: 2018/04/09 11:59:18 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	free_files(t_files files)
 {
-	int		i;
+	size_t	i;
 
 	i = 0;
 	if (files.arr)

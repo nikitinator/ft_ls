@@ -6,7 +6,7 @@
 /*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/28 12:53:21 by snikitin          #+#    #+#             */
-/*   Updated: 2018/04/06 18:07:23 by snikitin         ###   ########.fr       */
+/*   Updated: 2018/04/09 12:24:09 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void			print_one_line(t_file file, t_add_file_info i)
 
 void			handle_sym_links(t_files files, t_add_file_info *f_i)
 {
-	t_uint	i;
+	size_t	i;
 	char	*to_free;
 	char	buf[MAX_FILENAME_LEN];
 
@@ -63,7 +63,7 @@ int				get_owners_groups(t_files files, t_add_file_info *f_i)
 {
 	struct passwd	*u_p;
 	struct group	*g_p;
-	int				i;
+	size_t			i;
 
 	i = 0;
 	while (i < files.size)
@@ -93,7 +93,7 @@ static int		get_file_info(t_files files, char *dir_path,
 
 void			print_files_long(t_files files, char *dir_path)
 {
-	int				i;
+	size_t			i;
 	t_add_file_info *inf;
 
 	if (files.size == 0)

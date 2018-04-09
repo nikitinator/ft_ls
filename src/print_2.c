@@ -6,7 +6,7 @@
 /*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 16:21:17 by snikitin          #+#    #+#             */
-/*   Updated: 2018/04/06 18:07:00 by snikitin         ###   ########.fr       */
+/*   Updated: 2018/04/09 12:05:58 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	print_hex_num(int num)
 	free(hex);
 }
 
-void	print_major_minor(dev_t st_rdev, t_byte major_spaces,
+void		print_major_minor(dev_t st_rdev, t_byte major_spaces,
 		t_byte minor_spaces)
 {
 	int		major;
@@ -37,18 +37,19 @@ void	print_major_minor(dev_t st_rdev, t_byte major_spaces,
 	print_n_spaces(major_spaces);
 	ft_putnbr(major);
 	ft_putchar(',');
-	if (minor_spaces > 4 || minor_spaces < 1)//&& major_spaces > 2)
+	if ((minor_spaces > 4 || minor_spaces < 1) && major_spaces < 2)
 	{
 		ft_putchar(' ');
-		print_hex_num(minor);
+		print_hex_num(minor - 3);
 	}
 	else
 	{
-	  print_n_spaces(minor_spaces);
-	  ft_putnbr(minor);
+		print_n_spaces(minor_spaces);
+		ft_putnbr(minor);
 	}
 }
-void	print_mod_time(time_t mod_time)
+
+void		print_mod_time(time_t mod_time)
 {
 	char	*mod_time_str;
 	time_t	cur_time;
@@ -77,13 +78,13 @@ void	print_mod_time(time_t mod_time)
 	}
 }
 
-void	putnbr_align(int n, t_byte num_space)
+void		putnbr_align(int n, t_byte num_space)
 {
 	print_n_spaces(num_space);
 	ft_putnbr(n);
 }
 
-void	putstr_align(char *str, t_byte num_space)
+void		putstr_align(char *str, t_byte num_space)
 {
 	ft_putstr(str);
 	print_n_spaces(num_space);

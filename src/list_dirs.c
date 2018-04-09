@@ -6,7 +6,7 @@
 /*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 17:33:44 by snikitin          #+#    #+#             */
-/*   Updated: 2018/04/06 17:52:28 by snikitin         ###   ########.fr       */
+/*   Updated: 2018/04/09 11:57:14 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int		list_dir(t_file dir, t_params params)
 
 void	list_dirs(t_files dirs, t_params params)
 {
-	int		i;
+	size_t	i;
 
 	if (dirs.size == 0)
 		return ;

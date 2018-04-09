@@ -6,7 +6,7 @@
 /*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 15:12:39 by snikitin          #+#    #+#             */
-/*   Updated: 2018/03/30 15:42:37 by snikitin         ###   ########.fr       */
+/*   Updated: 2018/04/09 11:58:58 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ int		file_cmp_time_modif(t_file file_1, t_file file_2)
 void	quick_sort_files(t_file *arr, t_uint size,
 		int (*file_cmp)(t_file file_1, t_file file_2))
 {
-	t_uint	i;
-	t_uint	last;
+	size_t	i;
+	size_t	last;
 
 	if (size <= 1)
 		return ;

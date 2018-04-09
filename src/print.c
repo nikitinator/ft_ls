@@ -6,7 +6,7 @@
 /*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 15:11:49 by snikitin          #+#    #+#             */
-/*   Updated: 2018/04/06 18:00:38 by snikitin         ###   ########.fr       */
+/*   Updated: 2018/04/09 12:24:39 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	print_n_spaces(int n)
 
 void	print_total(t_files files)
 {
-	int			i;
+	size_t		i;
 	blkcnt_t	total_blocks_num;
 
 	if (!files.size)

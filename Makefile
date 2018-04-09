@@ -6,7 +6,7 @@
 #    By: snikitin <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/13 20:40:56 by snikitin          #+#    #+#              #
-#    Updated: 2018/04/06 17:47:07 by snikitin         ###   ########.fr        #
+#    Updated: 2018/04/09 12:26:44 by snikitin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,12 +14,14 @@
 
 NAME := ft_ls 
 
+
 # project directories
 
 SRC_DIR := ./src/
 OBJ_DIR := ./obj/
 INC_DIR := ./inc/
 LIB_DIR := ./lib/
+
 
 # project source files
 
@@ -46,10 +48,12 @@ SRC := main.c\
 	   puterror.c\
 	   ft_itoa_base.c
 
+
 # project object files
 
 OBJ = $(addprefix $(OBJ_DIR), $(SRC:.c=.o))
 INC = $(addprefix $(INC_DIR), $(NAME:=.h))
+
 
 # libraries
 
@@ -76,6 +80,7 @@ HEADER_FLAGS := -I $(INC_DIR) -I $(LIBFT_INC)
 # compiler
 
 CC := gcc
+
 
 # rules
 
