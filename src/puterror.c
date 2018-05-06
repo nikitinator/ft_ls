@@ -6,7 +6,7 @@
 /*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/30 18:45:52 by snikitin          #+#    #+#             */
-/*   Updated: 2018/04/05 17:56:48 by snikitin         ###   ########.fr       */
+/*   Updated: 2018/05/06 20:18:22 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,8 @@
 
 static char	*get_name_from_path(char *str)
 {
-	size_t	len_str;
 	char	*result;
 
-	len_str = ft_strlen(str);
-	if (str[len_str - 1] == '/')
-		str[len_str - 1] = '\0';
 	result = ft_strrchr(str, '/');
 	if (result)
 	{

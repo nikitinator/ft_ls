@@ -6,7 +6,7 @@
 #    By: snikitin <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/13 20:40:56 by snikitin          #+#    #+#              #
-#    Updated: 2018/04/09 17:50:13 by snikitin         ###   ########.fr        #
+#    Updated: 2018/05/06 20:12:36 by snikitin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,7 +66,6 @@ LIBFT_FLAGS :=  -lft -L $(LIBFT_DIR)
 # compilation flags
 
 CC_FLAGS := -Wall -Wextra -Werror -O3
-
 
 # linking flags
 

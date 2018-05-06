@@ -6,7 +6,7 @@
 /*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/16 20:00:09 by snikitin          #+#    #+#             */
-/*   Updated: 2018/04/06 17:49:49 by snikitin         ###   ########.fr       */
+/*   Updated: 2018/05/06 20:00:00 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void	list_arg_files(t_arg arg_f, t_params *par)
 			print_dir_name(arg_f.dirs.arr[0].name, &par->first_time);
 		par->first_time = 0;
 		if (list_dir(arg_f.dirs.arr[0], *par))
-			puterror_perm_denied("");
+			puterror_perm_denied(arg_f.dirs.arr[0].name);
 	}
 	else
 	{
